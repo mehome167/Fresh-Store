@@ -11,7 +11,6 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fafafa; color: #1a1a1a; scroll-behavior: smooth; }
         .font-playfair { font-family: 'Playfair Display', serif; }
         
-        /* Enhanced Header with Glassmorphism */
         header { 
             position: fixed; top: 0; left: 0; width: 100%; z-index: 100; 
             background: rgba(255, 255, 255, 0.85); 
@@ -20,131 +19,114 @@
             transition: all 0.3s ease;
         }
 
+        /* WA Floating Menu Styling */
         .wa-float { position: fixed; bottom: 30px; right: 20px; z-index: 1000; }
         .wa-menu { 
-            position: absolute; bottom: 70px; right: 0; width: 220px; 
-            background: white; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            position: absolute; bottom: 75px; right: 0; width: 240px; 
+            background: white; border-radius: 20px; box-shadow: 0 15px 45px rgba(0,0,0,0.15);
             display: none; flex-direction: column; overflow: hidden; border: 1px solid #f0f0f0;
         }
         .wa-menu.active { display: flex; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        .wa-menu a { padding: 14px 18px; font-size: 14px; font-weight: 600; border-bottom: 1px solid #f8f8f8; transition: all 0.3s; color: #4a4a4a; }
-        .wa-menu a:hover { background: #fdf2f8; color: #ec4899; padding-left: 22px; }
+        .wa-menu a { padding: 16px 20px; font-size: 14px; font-weight: 700; border-bottom: 1px solid #f8f8f8; transition: all 0.3s; color: #374151; display: flex; align-items: center; gap: 10px; }
+        .wa-menu a:hover { background: #fdf2f8; color: #ec4899; padding-left: 25px; }
 
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
-        /* Enhanced Product Card */
         .product-card { 
             background: #ffffff; border-radius: 20px; border: 1px solid #f4f4f4; 
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
             overflow: hidden; display: flex; flex-direction: column; 
         }
-        .product-card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08); 
-            border-color: #fce7f3;
-        }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: #fce7f3; }
         
-        /* Modern Buttons */
-        .btn-buy { 
-            background: linear-gradient(135deg, #111827 0%, #374151 100%); 
-            color: #fff; font-size: 11px; font-weight: 700; padding: 12px; 
-            border-radius: 10px; text-align: center; flex: 1; letter-spacing: 0.5px;
-            transition: all 0.3s;
-        }
-        .btn-buy:hover { background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%); box-shadow: 0 8px 15px rgba(236, 72, 153, 0.3); transform: translateY(-2px); }
+        .btn-buy { background: linear-gradient(135deg, #111827 0%, #374151 100%); color: #fff; font-size: 11px; font-weight: 700; padding: 12px; border-radius: 10px; text-align: center; flex: 1; transition: all 0.3s; }
+        .btn-buy:hover { background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%); transform: translateY(-2px); }
         
-        .btn-wa { 
-            background: #25d366; color: #fff; font-size: 18px; padding: 10px 14px; 
-            border-radius: 10px; transition: all 0.3s; display: flex; align-items: center; justify-content: center;
-        }
-        .btn-wa:hover { background: #1ebd57; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.3); transform: translateY(-2px); }
+        .btn-wa { background: #25d366; color: #fff; font-size: 18px; padding: 10px 14px; border-radius: 10px; transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
+        .btn-wa:hover { background: #1ebd57; transform: translateY(-2px); }
 
-        .category-link { 
-            cursor: pointer; font-size: 12px; text-transform: uppercase; color: #6b7280; 
-            font-weight: 700; padding: 10px 20px; white-space: nowrap; transition: all 0.3s; 
-            border-radius: 24px; background: white; border: 1px solid #eee;
-        }
-        .category-link:hover { background: #fdf2f8; color: #ec4899; border-color: #fbcfe8; }
-        .category-link.active { 
-            background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%); 
-            color: white; border: none; box-shadow: 0 6px 15px rgba(236, 72, 153, 0.25); 
-        }
+        .category-link { cursor: pointer; font-size: 12px; text-transform: uppercase; color: #6b7280; font-weight: 700; padding: 10px 20px; white-space: nowrap; transition: all 0.3s; border-radius: 24px; background: white; border: 1px solid #eee; }
+        .category-link.active { background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%); color: white; border: none; }
 
         .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body>
 
+    <!-- WhatsApp Floating Section -->
     <div class="wa-float">
         <div class="wa-menu" id="waMenu">
-            <a href="#" id="wa-help"><i class="fas fa-headset mr-2 text-pink-500"></i> Order Help</a>
-            <a href="#" id="wa-info"><i class="fas fa-info-circle mr-2 text-pink-500"></i> Product Info</a>
+            <!-- Admin Data will load here -->
         </div>
-        <button onclick="toggleWaMenu()" class="bg-gradient-to-r from-[#25d366] to-[#1ebd57] text-white w-16 h-16 rounded-full shadow-[0_10px_25px_rgba(37,211,102,0.4)] hover:shadow-[0_15px_35px_rgba(37,211,102,0.6)] flex items-center justify-center text-3xl hover:-translate-y-1 transition-all duration-300">
+        <button onclick="toggleWaMenu()" class="bg-gradient-to-r from-[#25d366] to-[#1ebd57] text-white w-16 h-16 rounded-full shadow-xl flex items-center justify-center text-3xl hover:-translate-y-1 active:scale-95 transition-all duration-300">
             <i class="fab fa-whatsapp"></i>
         </button>
     </div>
 
+    <!-- Header & Navigation -->
     <header>
         <nav class="max-w-[1400px] mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="flex items-center justify-between w-full md:w-auto">
-                <a href="#" class="logo font-playfair font-bold text-3xl tracking-tighter" id="display-logo">Loading...</a>
-                <div class="md:hidden text-2xl text-gray-800 hover:text-pink-500 transition"><i class="fas fa-shopping-bag"></i></div>
+                <a href="index.html" class="logo font-playfair font-bold text-3xl tracking-tighter" id="display-logo">Loading...</a>
+                <div class="md:hidden text-2xl text-gray-800"><i class="fas fa-shopping-bag"></i></div>
             </div>
-            <div class="relative w-full md:max-w-[500px] group">
-                <input type="text" id="searchInput" placeholder="Search premium products..." class="w-full py-3 px-12 rounded-full border border-gray-200 bg-white shadow-sm text-sm outline-none focus:ring-2 ring-pink-400 focus:border-transparent transition-all group-hover:shadow-md">
-                <i class="fas fa-search absolute left-5 top-3.5 text-gray-400 group-focus-within:text-pink-500 transition-colors"></i>
+            <div class="relative w-full md:max-w-[500px]">
+                <input type="text" id="searchInput" placeholder="Search premium products..." class="w-full py-3 px-12 rounded-full border border-gray-200 bg-white text-sm outline-none focus:ring-2 ring-pink-400 transition-all">
+                <i class="fas fa-search absolute left-5 top-3.5 text-gray-400"></i>
             </div>
         </nav>
     </header>
 
     <main class="max-w-[1400px] mx-auto px-4 pt-36 pb-12">
-        <div class="hero-container rounded-[2rem] md:rounded-[3rem] aspect-[16/8] md:aspect-[16/6] relative overflow-hidden bg-gray-100 mb-12 shadow-2xl" id="slider-container"></div>
+        <!-- Sliders -->
+        <div class="hero-container rounded-[2rem] aspect-[16/8] md:aspect-[16/6] relative overflow-hidden bg-gray-100 mb-12 shadow-sm" id="slider-container"></div>
 
-        <div id="special-banner" class="hidden mb-16 bg-gradient-to-br from-slate-900 to-black rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row items-center p-8 md:p-14 relative shadow-2xl border border-gray-800">
-            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-            <div class="text-white z-10 w-full md:w-1/2 relative">
-                <h2 id="sp-title" class="text-4xl md:text-6xl font-bold mb-5 font-playfair leading-tight"></h2>
-                <p id="sp-desc" class="text-gray-300 text-base mb-8 max-w-md leading-relaxed"></p>
-                <a href="#" id="sp-link" class="inline-block bg-white text-black px-10 py-4 rounded-full font-bold uppercase text-xs tracking-[0.2em] hover:bg-gradient-to-r hover:from-pink-500 hover:to-rose-500 hover:text-white hover:shadow-[0_10px_25px_rgba(236,72,153,0.4)] transition-all duration-300 transform hover:-translate-y-1"></a>
+        <!-- Special Banner -->
+        <div id="special-banner" class="hidden mb-16 bg-gradient-to-br from-slate-900 to-black rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row items-center p-8 md:p-14 relative shadow-2xl">
+            <div class="text-white z-10 w-full md:w-1/2">
+                <h2 id="sp-title" class="text-4xl md:text-6xl font-bold mb-5 font-playfair"></h2>
+                <p id="sp-desc" class="text-gray-300 text-base mb-8 max-w-md"></p>
+                <a href="#" id="sp-link" class="inline-block bg-white text-black px-10 py-4 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-pink-500 hover:text-white transition-all"></a>
             </div>
             <div class="w-full md:w-1/2 flex justify-center mt-10 md:mt-0 relative z-10">
-                <img id="sp-img" src="" class="max-h-72 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)] transform hover:scale-105 transition-transform duration-500">
+                <img id="sp-img" src="" class="max-h-72 object-contain">
             </div>
         </div>
 
+        <!-- Category Bar -->
         <div class="mb-10 flex gap-4 overflow-x-auto no-scrollbar py-2" id="category-bar">
             <span class="category-link active" onclick="setCategory('all')">All Items</span>
         </div>
 
+        <!-- Products Grid -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-8" id="product-grid"></div>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-gray-950 text-gray-400 py-16 px-6 mt-10 border-t border-gray-900">
         <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
             <div>
-                <h3 class="text-white font-playfair text-2xl mb-5 font-bold" id="footer-logo">Alizeh Fresh</h3>
-                <p class="text-sm leading-relaxed text-gray-500">Pakistan's premium affiliate store. Curated with love from top platforms to bring you the best.</p>
+                <h3 class="text-white font-playfair text-2xl mb-5 font-bold">Alizeh Fresh</h3>
+                <p class="text-sm">Pakistan's premium affiliate store. Handpicked quality products just for you.</p>
             </div>
             <div class="flex flex-col items-start md:items-center">
-                <h4 class="text-white font-bold mb-5 text-sm uppercase tracking-wider">Headquarters</h4>
-                <p class="text-sm text-gray-500 flex items-center"><i class="fas fa-map-marker-alt mr-2 text-pink-500"></i> Hasilpur, Bahawalpur</p>
+                <h4 class="text-white font-bold mb-5 text-sm uppercase">Headquarters</h4>
+                <p class="text-sm" id="footer-loc"><i class="fas fa-map-marker-alt mr-2 text-pink-500"></i> Loading...</p>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-5 text-sm uppercase tracking-wider">Support</h4>
-                <p class="text-sm text-gray-500 flex items-center mb-2" id="footer-wa"></p>
-                <p class="text-sm text-gray-500 flex items-center" id="footer-loc"></p>
+                <h4 class="text-white font-bold mb-5 text-sm uppercase">Support</h4>
+                <p class="text-sm mb-2" id="footer-wa"></p>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-5 text-sm uppercase tracking-wider">Follow Us</h4>
+                <h4 class="text-white font-bold mb-5 text-sm uppercase">Follow Us</h4>
                 <div class="flex gap-5 text-white text-2xl">
-                    <i class="fab fa-facebook-f w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center hover:bg-blue-600 hover:-translate-y-1 transition-all cursor-pointer"></i>
-                    <i class="fab fa-instagram w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center hover:bg-pink-600 hover:-translate-y-1 transition-all cursor-pointer" id="footer-ig"></i>
+                    <a href="#" id="footer-fb" target="_blank" class="hover:text-pink-500 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" id="footer-ig" target="_blank" class="hover:text-pink-500 transition-colors"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
-        <div class="max-w-[1400px] mx-auto mt-12 pt-8 border-t border-gray-900 text-center text-xs text-gray-600">
-            &copy; 2026 Alizeh Fresh. All rights reserved. Designed with precision.
+        <div class="max-w-[1400px] mx-auto mt-12 pt-8 border-t border-gray-900 text-center text-xs">
+            &copy; 2026 Alizeh Fresh. Powerd by Muneer Bhai.
         </div>
     </footer>
 
@@ -169,18 +151,51 @@
 
         window.toggleWaMenu = () => document.getElementById('waMenu').classList.toggle('active');
 
+        // Settings (Logo, WhatsApp, Socials)
         onSnapshot(doc(db, "settings", "main"), d => {
             if(d.exists()){
                 const s = d.data();
                 waNumber = s.whatsapp || waNumber;
                 document.getElementById('display-logo').innerHTML = `${s.logo || 'Alizeh'} <span class="font-normal text-pink-500">Fresh</span>`;
-                document.getElementById('footer-wa').innerHTML = `<i class="fab fa-whatsapp mr-2 text-pink-500"></i> +${waNumber}`;
+                
+                const cleanNumber = waNumber.replace(/^\+/, '');
+                document.getElementById('footer-wa').innerHTML = `<i class="fab fa-whatsapp mr-2 text-pink-500"></i> +${cleanNumber}`;
                 document.getElementById('footer-loc').innerHTML = `<i class="fas fa-globe mr-2 text-pink-500"></i> ${s.location || "Hasilpur"}`;
-                document.getElementById('wa-help').href = `https://wa.me/${waNumber}?text=Help chahiye`;
-                document.getElementById('wa-info').href = `https://wa.me/${waNumber}?text=Info chahiye`;
+                
+                if(s.facebook) document.getElementById('footer-fb').href = s.facebook;
+                if(s.instagram) document.getElementById('footer-ig').href = s.instagram;
             }
         });
 
+        // FIXED: Dynamic WhatsApp Menu Logic
+        // This now listens to the EXACT same collection as your Admin: "wa_menu"
+        onSnapshot(query(collection(db, "wa_menu"), orderBy("date", "asc")), snap => {
+            const menu = document.getElementById('waMenu');
+            menu.innerHTML = ''; 
+            
+            // Default first 2 permanent links
+            menu.innerHTML += `
+                <a href="https://wa.me/${waNumber}?text=Assalam-o-Alaikum, I need help with an order." target="_blank">
+                    <i class="fas fa-shopping-cart text-green-500"></i> Order Help
+                </a>
+                <a href="https://wa.me/${waNumber}?text=Assalam-o-Alaikum, I want to know about your products." target="_blank">
+                    <i class="fas fa-info-circle text-blue-500"></i> Product Info
+                </a>`;
+
+            // Admin Added Dynamic Links
+            snap.forEach(docSnap => {
+                const link = docSnap.data();
+                const msg = encodeURIComponent(link.text || "Hello");
+                const label = link.label || "Support";
+                
+                menu.innerHTML += `
+                    <a href="https://wa.me/${waNumber}?text=${msg}" target="_blank">
+                        <i class="fas fa-star text-pink-500"></i> ${label}
+                    </a>`;
+            });
+        });
+
+        // Special Banner
         onSnapshot(doc(db, "settings", "special"), d => {
             if(d.exists()){
                 const sp = d.data();
@@ -193,6 +208,7 @@
             }
         });
 
+        // Categories
         onSnapshot(query(collection(db, "categories"), orderBy("date", "desc")), snap => {
             const bar = document.getElementById('category-bar');
             bar.innerHTML = `<span class="category-link ${currentCat==='all'?'active':''}" onclick="setCategory('all')">All Items</span>`;
@@ -205,13 +221,17 @@
         window.setCategory = (cat) => {
             currentCat = cat;
             renderProducts(currentCat === 'all' ? allProducts : allProducts.filter(p => p.category === currentCat));
+            const links = document.querySelectorAll('.category-link');
+            links.forEach(l => l.classList.remove('active'));
+            event.target.classList.add('active');
         };
 
+        // Products
         onSnapshot(query(collection(db, "products"), orderBy("date", "desc")), (snap) => {
             allProducts = [];
             snap.forEach(docSnap => {
                 const data = docSnap.data();
-                data.id = docSnap.id; // Firebase ID add karna link matching ke liye
+                data.id = docSnap.id;
                 allProducts.push(data);
             });
             renderProducts(allProducts);
@@ -220,14 +240,11 @@
         function renderProducts(products) {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
-            
-            // URL se ID nikalna
             const urlParams = new URLSearchParams(window.location.search);
             const targetId = urlParams.get('id');
 
             products.forEach(p => {
-                const msg = encodeURIComponent(`Inquiry about: ${p.name}`);
-                // Agar yeh wahi product hai jo link mein di gayi hai, toh style tabdeel karein
+                const msg = encodeURIComponent(`Inquiry about: ${p.name}\nPrice: Rs. ${p.price}`);
                 const isHighlighted = targetId && p.id === targetId;
 
                 grid.innerHTML += `
@@ -246,22 +263,21 @@
                 </div>`;
             });
 
-            // Smooth Scroll to Target Product
             if(targetId) {
                 setTimeout(() => {
                     const el = document.getElementById('prod-' + targetId);
-                    if(el) {
-                        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
+                    if(el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 1000);
             }
         }
 
+        // Search
         document.getElementById('searchInput').oninput = (e) => {
             const term = e.target.value.toLowerCase();
             renderProducts(allProducts.filter(p => p.name.toLowerCase().includes(term)));
         };
 
+        // Sliders
         onSnapshot(collection(db, "sliders"), snap => {
             const cont = document.getElementById('slider-container');
             cont.innerHTML = '';
